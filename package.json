@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/abeyoshida/stats#readme",
   "dependencies": {
+    "@types/node": "^18.7.18",
     "concurrently": "^7.4.0",
     "nodemon": "^2.0.20"
   }
