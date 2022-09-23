@@ -3,6 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MatchReader = void 0;
 const utils_1 = require("./utils");
 const CsvFileReader_1 = require("./CsvFileReader");
+/**
+ * Load up data and convert the string data to the correct data type
+ * that fulfills the requirements for the MatchData type.
+ */
 class MatchReader {
     constructor(reader) {
         this.reader = reader;

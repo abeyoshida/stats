@@ -14,6 +14,10 @@ interface DataReader {
   data: string[][];
 }
 
+/**
+ * Load up data and convert the string data to the correct data type
+ * that fulfills the requirements for the MatchData type.
+ */
 export class MatchReader {
   static fromCsv(filename:string): MatchReader {
     return new MatchReader(new CsvFileReader(filename));

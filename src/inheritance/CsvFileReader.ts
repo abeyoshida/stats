@@ -1,5 +1,9 @@
 import fs from 'fs';
 
+/**
+ * The generic <T> assigned to this abstract class allows us to 
+ * pass in data and access the generic within our class.
+ */
 export abstract class CsvFileReader<T> {
   data: T[] = [];
   
