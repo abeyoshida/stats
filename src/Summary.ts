@@ -12,10 +12,11 @@ export interface OutputTarget {
 
 export class Summary {
   /**
-   * Static methods can be called off the class.
+   * Static methods can be called off the class and can be used to 
+   * create a pre-configured method of the class.
    */
   static winsAnalysisAndHtmlReport(team: string): Summary {
-    new Summary(
+    return new Summary(
       new WinsAnalysis(team),
       new HtmlReport()
     );

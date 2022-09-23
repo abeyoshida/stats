@@ -9,10 +9,11 @@ class Summary {
         this.outputTarget = outputTarget;
     }
     /**
-     * Static methods can be called off the class.
+     * Static methods can be called off the class and can be used to
+     * create a pre-configured method of the class.
      */
     static winsAnalysisAndHtmlReport(team) {
-        new Summary(new WinsAnalysis_1.WinsAnalysis(team), new HtmlReports_1.HtmlReport());
+        return new Summary(new WinsAnalysis_1.WinsAnalysis(team), new HtmlReports_1.HtmlReport());
     }
     buildAndPrintReport(matches) {
         const output = this.analyzer.run(matches);
