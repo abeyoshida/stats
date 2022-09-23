@@ -1,16 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const MatchReader_1 = require("./MatchReader");
-const MatchResult_1 = require("./MatchResult");
-const reader = new MatchReader_1.MatchReader('./resource/football.csv');
-reader.read();
-let manUnitedWins = 0;
-for (let match of reader.data) {
-    if (match[1] === 'Man United' && match[5] === MatchResult_1.MatchResult.HomeWin) {
-        manUnitedWins++;
-    }
-    else if (match[2] === 'Man United' && match[5] === MatchResult_1.MatchResult.AwayWin) {
-        manUnitedWins++;
-    }
-}
-console.log(`Man United won ${manUnitedWins} games.`);
+const CsvFileReader_1 = require("./CsvFileReader");
+const Summary_1 = require("./Summary");
+const WinsAnalysis_1 = require("./analyzers/WinsAnalysis");
+const HtmlReports_1 = require("./reportTargets/HtmlReports");
+/**
+ * Pass a csv file to be read, parsed into rows and columns
+ * and stored in the "data" property of the class.
+ */
+const csvFileReader = new CsvFileReader_1.CsvFileReader('./resource/football.csv');
+// create an instance of MatchReader and pas sin something satisfying the DataReader interface
+const matchReader = new MatchReader_1.MatchReader(csvFileReader);
+matchReader.load();
+const summary = new Summary_1.Summary(new WinsAnalysis_1.WinsAnalysis('Man United'), new HtmlReports_1.HtmlReport());
+// const summary = Summary.winsAnalysisAndHtmlReport('Man United');
+summary.buildAndPrintReport(matchReader.matches);
